@@ -1,5 +1,5 @@
 ﻿#include <string>
-#include"C:\Users\Кирилл\translator\include\term.h"
+#include "term.h"
 class ArithmeticExpression
 {
 protected:

@@ -1,5 +1,5 @@
-﻿#include"C:\Users\Кирилл\translator\gtest\gtest.h"
-#include "C:\Users\Кирилл\translator\include\term.h"
+﻿#include "gtest.h"
+#include "term.h"
 
 TEST(Number, can_create_number)
 {

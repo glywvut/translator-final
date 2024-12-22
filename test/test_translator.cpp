@@ -1,5 +1,5 @@
-﻿#include"C:\Users\Кирилл\translator\gtest\gtest.h"
-#include"C:\Users\Кирилл\translator\include\translator.h"
+﻿#include "gtest.h"
+#include "translator.h"
 
 TEST(ArithmeticExpression, can_get_infix)
 {    

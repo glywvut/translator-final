@@ -21,7 +21,6 @@ class Number : public Term
 protected:
     double value;
 public:
-    char get_operation() const noexcept override { return 'n'; }
     Number(double val) : value(val) { type = numbers; }
     double get_value() const noexcept { return value; }
 };
@@ -33,8 +32,7 @@ protected:
     int priority;
 public:
     Operation(char op_) : op(op_), priority(priorities[op]) { type = operation; }
-     char get_operation() const noexcept override { return op; };
-     double get_value() const noexcept override { return 0; }
+     char get_operation() const noexcept  { return op; };
     int get_priority() const noexcept
     {
         return priority;
@@ -48,8 +46,6 @@ protected:
 public:
     OpenBracket(char br = '(') : bracket(br) { type = open_bracket; }
     char get_bracket() const noexcept { return bracket; }
-     double get_value() const noexcept override { return 0; }
-     char get_operation() const noexcept override { return 'o'; }
 };
 
 class ClosedBracket : public Term
@@ -59,6 +55,4 @@ protected:
 public:
     ClosedBracket(char br = ')') : bracket(br) { type = close_bracket; }
     char get_bracket() const noexcept { return bracket; }
-     char get_operation() const noexcept override { return 'c'; }
-     double get_value() const noexcept override { return 0; }
 };

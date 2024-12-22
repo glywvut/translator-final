@@ -12,7 +12,7 @@ ArithmeticExpression::~ArithmeticExpression()
 
 void ArithmeticExpression::Parse() {
 	string str = infix;
-	size_t size = str.size();
+	size_t size = lexems.size();
 	map<types, size_t> states{ {numbers, 0}, {operation, 1}, {open_bracket, 2}, {close_bracket, 3} };
 	size_t state{};
 	Stack<char> stack;
@@ -76,7 +76,7 @@ void ArithmeticExpression::ToPostfix() {
 			}
 			else {
 				while (!stack.IsEmpty() && stack.top()->get_type() == operation && \
-					dynamic_cast <Operation*>(lexems[i])->get_priority() <= dynamic_cast<Operation*>(stack.top())->get_priority()) {
+					static_cast <Operation*>(lexems[i])->get_priority() <= static_cast<Operation*>(stack.top())->get_priority()) {
 					polish.push_back(stack.top());
 					stack.pop();
 				}
@@ -166,7 +166,7 @@ double ArithmeticExpression::Calculate()
 		t = polish[i]->get_type();
 		if (t == numbers)
 		{
-			stack.push(dynamic_cast<Number*>(polish[i])->get_value());
+			stack.push(static_cast<Number*>(polish[i])->get_value());
 		}
 		else
 		{
@@ -174,7 +174,7 @@ double ArithmeticExpression::Calculate()
 			stack.pop();
 			left_numb = stack.top();
 			stack.pop();
-			switch (dynamic_cast<Operation*>(polish[i])->get_operation())
+			switch (static_cast<Operation*>(polish[i])->get_operation())
 			{
 			case '*':
 				stack.push(left_numb * right_numb);
@@ -213,11 +213,11 @@ void  ArithmeticExpression::PrintPostfix() const
 	{
 		if (polish[i]->get_type() == numbers)
 		{
-			cout << dynamic_cast<Number*>(polish[i])->get_value();
+			cout << static_cast<Number*>(polish[i])->get_value();
 		}
 		else
 		{
-			cout << dynamic_cast<Operation*>(polish[i])->get_operation();
+			cout << static_cast<Operation*>(polish[i])->get_operation();
 		}
 		if (i == polish.size() - 1) cout << "\n";
 	}

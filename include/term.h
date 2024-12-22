@@ -4,7 +4,6 @@
 using namespace std;
 
 enum types { numbers, operation, open_bracket, close_bracket };
-map<char, int> priorities = { {'+', 1}, {'-', 1}, {'*', 2}, {'/', 2} };
 
 class Term
 {
@@ -12,7 +11,7 @@ protected:
     types type;
     Term() {};
 public:
-
+map<char, int> priorities = { {'+', 1}, {'-', 1}, {'*', 2}, {'/', 2} };
     types get_type() const noexcept { return type; }
 };
 

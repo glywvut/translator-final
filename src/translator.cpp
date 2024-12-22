@@ -1,4 +1,4 @@
-﻿#include"translator.h"
+﻿#include "translator.h"
 
 ArithmeticExpression::ArithmeticExpression(string infx) { this->infix = infx; }
 
